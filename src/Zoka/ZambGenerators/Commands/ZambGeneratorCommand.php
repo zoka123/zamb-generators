@@ -53,9 +53,19 @@ class ZambGeneratorCommand extends Command
 
         $generator = $this->generator;
         $generator->setResourceName($this->resourceName);
+        $generator->init();
+
         if (!empty($this->all)) {
             $generator->generateZambCrudController();
+
             $generator->generateZambModel();
+
+            $migrationName = $this->getMigrationName($generator->templateData['resource']);
+            $this->call('generate:migration', ['migrationName' => $migrationName]);
+
+            $tableName = $generator->templateData['collection'];
+            $this->call('generate:seed', compact('tableName'));
+
             $generator->generateZambRepository();
             $generator->generateZambViews();
             $generator->printZambRoutes();

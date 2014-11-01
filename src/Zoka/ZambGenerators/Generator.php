@@ -1,9 +1,7 @@
 <?php
 
 namespace Zoka\ZambGenerators;
-
-use \Way\Generators\Generator as WayGenerator;
-use \Way\Filesystem\Filesystem as WayFilesystem;
+use Config;
 
 
 /**
@@ -29,13 +27,18 @@ class Generator
     public $templateData = array();
 
 
-    public function __construct()
+    public function __construct(\Way\Generators\Generator $generator)
     {
+        $this->generator = $generator;
+    }
 
+    public function init()
+    {
+        if(empty($this->resourceName)){
+            throw new \Exception('No resource name');
+        }
         $this->setupPaths();
-
         $this->templateData = $this->getTemplateData();
-        $this->generator = new WayGenerator(new WayFilesystem());
     }
 
 
@@ -44,15 +47,12 @@ class Generator
         $this->resourceName = $resourceName;
     }
 
-    /**
-     *
-     */
     protected function setupPaths()
     {
-        self::$CONTROLLER_ROOT = app_path('controllers') . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR;
-        self::$MODEL_ROOT = app_path('models') . DIRECTORY_SEPARATOR;
-        self::$VIEW_ROOT = app_path('views') . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR;
-        self::$REPOSITORY_ROOT = app_path() . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR;
+        self::$CONTROLLER_ROOT = Config::get("zamb-generators::controller_target_path");
+        self::$MODEL_ROOT =Config::get("zamb-generators::model_target_path");
+        self::$VIEW_ROOT = Config::get("zamb-generators::view_target_path");
+        self::$REPOSITORY_ROOT = Config::get("zamb-generators::repository_target_path");
     }
 
     public function generateZambCrudController()

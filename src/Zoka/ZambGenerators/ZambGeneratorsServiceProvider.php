@@ -29,29 +29,14 @@ class ZambGeneratorsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['zamb.generator.generate'] = $this->app->share(function ($app) {
+        $this->app['zamb-generators.generate'] = $this->app->share(function ($app) {
             $generator = $this->app->make('Zoka\ZambGenerators\Generator');
 
             return new ZambGeneratorCommand($generator);
         });
 
-        $this->commands('zamb.generator.generate');
+        $this->commands('zamb-generators.generate');
     }
-
-    /**
-     * Register the model generator
-     */
-    protected function registerModel()
-    {
-        $this->app['generate.model'] = $this->app->share(function ($app) {
-            $generator = $this->app->make('Way\Generators\Generator');
-
-            return new ModelGeneratorCommand($generator);
-        });
-
-        $this->commands('generate.model');
-    }
-
 
     /**
      * Get the services provided by the provider.
