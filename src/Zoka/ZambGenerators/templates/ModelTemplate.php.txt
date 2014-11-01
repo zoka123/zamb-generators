@@ -1,0 +1,12 @@
+<?php
+
+class $MODEL$ extends BaseModel
+{
+    protected $table = '$COLLECTION$';
+    public static $rules = array();
+
+    protected $fillable = array();
+
+    public $autoHydrateEntityFromInput = true;    // hydrates on new entries' validation
+    public $forceEntityHydrationFromInput = true; // hydrates whenever validation is called
+}

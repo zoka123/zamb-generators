@@ -1,0 +1,21 @@
+{
+    "name": "zantolov/zamb-generators",
+    "description": "Generators for Zamb",
+    "require": {
+        "way/generators": "~2.0",
+        "php": ">=5.4.0",
+        "illuminate/support": "~4.0"
+    },
+    "authors": [
+        {
+            "name": "Zoran Antolovic",
+            "email": "zokadgo@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "ZambGenerators": "src/"
+        }
+    }
+}

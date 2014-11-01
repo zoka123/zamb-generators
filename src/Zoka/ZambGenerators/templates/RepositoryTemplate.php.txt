@@ -1,0 +1,39 @@
+<?php
+
+namespace Repository;
+
+use $MODEL$;
+
+class $MODEL$Repository implements RepositoryInterface
+{
+
+    public function all()
+    {
+        return $MODEL$::all();
+    }
+
+    public function find($id)
+    {
+        return $MODEL$::find($id);
+    }
+
+    public function findOrFail($id)
+    {
+        return $MODEL$::findOrFail($id);
+    }
+
+    public function destroy($id)
+    {
+        return $MODEL$::destroy($id);
+    }
+
+    public function create($input)
+    {
+        return $MODEL$::create($input);
+    }
+
+    public function getNew()
+    {
+        return new $MODEL$;
+    }
+}

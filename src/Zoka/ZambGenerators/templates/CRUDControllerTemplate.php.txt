@@ -1,0 +1,31 @@
+<?php
+
+class Admin$NAME$Controller extends \AdminCRUDController {
+
+    /**
+     * CRUD controller specifics
+     */
+    protected function afterConstruct()
+    {
+        parent::afterConstruct();
+        $this->repository = new \Repository\$MODEL$Repository();
+        $this->templateRoot = 'Admin.$NAME$';
+        $this->baseRoute = 'Admin.$NAME$';
+    }
+
+
+    /**
+     * Show a list of all the users formatted for Datatables.
+     * @return Datatables JSON
+     */
+    public function getData()
+    {
+        $items = DB::table('$COLLECTION$')->select(array('$NAME$.id', '$NAME$.created_at'));
+
+        return Datatables::of($items)
+            ->add_column('actions', $this->getActions(array(self::EDIT_ACTION, self::DELETE_ACTION)))
+            //->remove_column('id')
+            ->make();
+    }
+
+}
