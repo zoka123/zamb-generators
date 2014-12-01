@@ -1,5 +1,7 @@
 <?php
 
+use Zantolov\Zamb\Model\BaseModel;
+
 class $MODEL$ extends BaseModel
 {
     protected $table = '$COLLECTION$';

@@ -1,6 +1,8 @@
 <?php
 
-class Admin$NAME$Controller extends \AdminCRUDController {
+use Zantolov\Zamb\Controller\AdminCRUDController;
+
+class Admin$NAME$Controller extends AdminCRUDController {
 
     /**
      * CRUD controller specifics
