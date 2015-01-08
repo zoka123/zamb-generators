@@ -1,6 +1,6 @@
 <?php
 
-use Zantolov\Zamb\Model\BaseModel;
+use Zantolov\Zamb\Models\BaseModel;
 
 class $MODEL$ extends BaseModel
 {

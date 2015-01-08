@@ -1,8 +1,9 @@
 <?php
 
-use Zantolov\Zamb\Controller\AdminCRUDController;
+use Zantolov\Zamb\Controllers\AdminCRUDController;
 
-class Admin$NAME$Controller extends AdminCRUDController {
+class Admin$NAME$Controller extends AdminCRUDController
+{
 
     /**
      * CRUD controller specifics
@@ -10,7 +11,7 @@ class Admin$NAME$Controller extends AdminCRUDController {
     protected function afterConstruct()
     {
         parent::afterConstruct();
-        $this->repository = new \Repository\$MODEL$Repository();
+        $this->repository = new \Repositories\$MODEL$Repository();
         $this->templateRoot = 'Admin.$NAME$';
         $this->baseRoute = 'Admin.$NAME$';
     }
@@ -22,7 +23,7 @@ class Admin$NAME$Controller extends AdminCRUDController {
      */
     public function getData()
     {
-        $items = DB::table('$COLLECTION$')->select(array('$NAME$.id', '$NAME$.created_at'));
+        $items = DB::table('$COLLECTION$')->select(array('$COLLECTION$.id', '$COLLECTION$.created_at'));
 
         return Datatables::of($items)
             ->add_column('actions', $this->getActions(array(self::EDIT_ACTION, self::DELETE_ACTION)))

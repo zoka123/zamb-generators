@@ -1,8 +1,9 @@
 <?php
 
-namespace Repository;
+namespace Repositories;
 
 use $MODEL$;
+use Zantolov\Zamb\Repositories\RepositoryInterface;
 
 class $MODEL$Repository implements RepositoryInterface
 {

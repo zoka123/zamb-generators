@@ -12,7 +12,7 @@ return array(
 
     'controller_target_path' => app_path('controllers/Admin/'),
     
-    'repository_target_path' => app_path('lib/Repository/'),
+    'repository_target_path' => app_path('repositories'),
 
     'migration_target_path' => app_path('database/migrations/'),
 
